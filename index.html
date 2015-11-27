@@ -81,6 +81,149 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/11/27/phpstorm-docker-xdebug-laravel5/" title="phpstorm-docker-xdebug-laravel5" itemprop="url">phpstorm-docker-xdebug-laravel5</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="wsmdr" target="_blank" itemprop="author">wsmdr</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-27T06:27:25.000Z" itemprop="datePublished"> 发表于 2015-11-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="Phpstorm_Docker_Xdebug_Laravel5">Phpstorm Docker Xdebug Laravel5</h1><h2 id="Docker_镜像下载">Docker 镜像下载</h2><ul>
+<li><code>docker pull wsmdr1986/php5.6</code></li>
+<li><code>docker pull wsmdr1986/nginx</code><h2 id="Laravel_下载">Laravel 下载</h2></li>
+<li><code>composer create-project laravel/laravel --prefer-dist</code></li>
+</ul>
+<h1 id="开始">开始</h1><ul>
+<li><code>docker run -tid --name=php -v /Users/wsmdr/sites/laravel:/app wsmdr1986/php5.6</code></li>
+<li><code>docker run -tid --name=www -v /Users/wsmdr/mydocker/conf_laravel_php56:/etc/nginx/conf.d --link php:php --volumes-from php -p 8001:80 wsmdr1986/nginx</code></li>
+<li><code>conf_laravel_php56</code> 文件夹里为default.conf代码</li>
+</ul>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       <span class="number">80</span>;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /app/public;</span><br><span class="line">        index  index.php index.html index.htm;</span><br><span class="line">        try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.php?<span class="variable">$query</span>_string;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /<span class="number">50</span>x.html;</span><br><span class="line">    location = /<span class="number">50</span>x.html &#123;</span><br><span class="line">        root   /app/public;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        root   /app/public;</span><br><span class="line">        fastcgi_pass   php:<span class="number">9000</span>;</span><br><span class="line">        fastcgi_index  index.php;</span><br><span class="line">        fastcgi_param  SCRIPT_FILENAME  <span class="variable">$document</span>_root<span class="variable">$fastcgi</span>_script_name;</span><br><span class="line">        include        fastcgi_params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>进入php container配置xdebug</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xdebug.remote_enable=<span class="number">1</span></span><br><span class="line">xdebug.idekey=PHPSTORM</span><br><span class="line">xdebug.remote_connect_back=<span class="number">1</span></span><br><span class="line">xdebug.remote_port=本机xdebug_port</span><br><span class="line">xdebug.remote_host=本机局域网ip地址</span><br></pre></td></tr></table></figure>
+<ul>
+<li>浏览器种cookie</li>
+<li>Phpstorm 常规配置<br><img src="http://7xo57b.com1.z0.glb.clouddn.com/static/images/xdebug-docker.png" alt=""></li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/docker/">docker</a><a href="/tags/laravel/">laravel</a><a href="/tags/phpstorm/">phpstorm</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/11/15/mysql5.7.9/" title="mysql5.7.9" itemprop="url">mysql5.7.9</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="wsmdr" target="_blank" itemprop="author">wsmdr</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-15T02:21:37.000Z" itemprop="datePublished"> 发表于 2015-11-15</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="MySQL_不知道初始密码">MySQL 不知道初始密码</h1><p>  Mysql 5.7.9 新版有初始密码，<code>mysql -uroot</code> 回车报<br>  <code>ERROR 1045 (28000): Access denied for user &#39;root&#39;@&#39;localhost&#39; (using password: NO)</code> 解决办法</p>
+<ul>
+<li><code>mysql.server stop</code></li>
+<li><code>mysql.server start  --skip-grant-tables</code></li>
+<li><code>mysql</code></li>
+<li><code>use mysql;</code></li>
+<li><code>UPDATE user SET authentication_string=PASSWORD(&#39;123456&#39;) WHERE User = &#39;root&#39; and Host = &#39;localhost&#39;;</code></li>
+<li><code>exit;</code></li>
+<li><code>mysql.server start</code></li>
+</ul>
+<p>下面 <code>mysql -uroot -p</code> 回车输入密码就可以了</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/mac/">mac</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/brew/">brew</a><a href="/tags/mac/">mac</a><a href="/tags/mysql/">mysql</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/11/12/phpstorm-vagrant-xdebug/" title="phpstorm-vagrant-xdebug" itemprop="url">phpstorm-vagrant-xdebug</a>
   </h1>
   <p class="article-author">By
@@ -139,14 +282,14 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/11/08/zsh/" title="zsh" itemprop="url">zsh</a>
+      <a href="/2015/11/07/zsh/" title="zsh" itemprop="url">zsh</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="wsmdr" target="_blank" itemprop="author">wsmdr</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-07T16:21:37.000Z" itemprop="datePublished"> 发表于 2015-11-08</time>
+    <time datetime="2015-11-07T16:21:37.000Z" itemprop="datePublished"> 发表于 2015-11-07</time>
     
   </p>
 </header>
@@ -210,14 +353,14 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/11/08/homebrew-nginx-php-mysql/" title="homebrew_nginx_php_mysql" itemprop="url">homebrew_nginx_php_mysql</a>
+      <a href="/2015/11/07/homebrew-nginx-php-mysql/" title="homebrew_nginx_php_mysql" itemprop="url">homebrew_nginx_php_mysql</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="wsmdr" target="_blank" itemprop="author">wsmdr</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-07T16:19:20.000Z" itemprop="datePublished"> 发表于 2015-11-08</time>
+    <time datetime="2015-11-07T16:19:20.000Z" itemprop="datePublished"> 发表于 2015-11-07</time>
     
   </p>
 </header>
@@ -375,7 +518,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/mac/" title="mac">mac<sup>1</sup></a></li>
+			<li><a href="/categories/mac/" title="mac">mac<sup>2</sup></a></li>
 		  
 		
 		  
@@ -392,19 +535,19 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/mac/" title="mac">mac<sup>2</sup></a></li>
+				<li><a href="/tags/mac/" title="mac">mac<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/homebrew/" title="homebrew">homebrew<sup>1</sup></a></li>
+				<li><a href="/tags/phpstorm/" title="phpstorm">phpstorm<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mysql/" title="mysql">mysql<sup>2</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/php/" title="php">php<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
 			
 		
 			
@@ -416,7 +559,7 @@
 			
 		
 			
-				<li><a href="/tags/phpstorm/" title="phpstorm">phpstorm<sup>1</sup></a></li>
+				<li><a href="/tags/homebrew/" title="homebrew">homebrew<sup>1</sup></a></li>
 			
 		
 			
@@ -425,6 +568,18 @@
 		
 			
 				<li><a href="/tags/xdebug/" title="xdebug">xdebug<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/laravel/" title="laravel">laravel<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/brew/" title="brew">brew<sup>1</sup></a></li>
 			
 		
 		</ul>

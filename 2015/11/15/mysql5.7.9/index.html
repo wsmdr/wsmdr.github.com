@@ -4,26 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>开始 | 王森 -blog</title>
+    <title>mysql5.7.9 | 王森 -blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="wsmdr">
     
 
     
-    <meta name="description" content="这是个好的开始终于使用 github pages 和 hexo 搭建好了静态博客网站
-一切开始吧">
+    <meta name="description" content="MySQL 不知道初始密码  Mysql 5.7.9 新版有初始密码，mysql -uroot 回车报  ERROR 1045 (28000): Access denied for user &amp;#39;root&amp;#39;@&amp;#39;localhost&amp;#39; (using password: NO) 解决办法
+
+mysql.server stop
+mysql.server start  --sk">
 <meta property="og:type" content="article">
-<meta property="og:title" content="开始">
-<meta property="og:url" content="http://wsmdr.github.io/2015/11/07/开始/index.html">
+<meta property="og:title" content="mysql5.7.9">
+<meta property="og:url" content="http://wsmdr.github.io/2015/11/15/mysql5.7.9/index.html">
 <meta property="og:site_name" content="王森 -blog">
-<meta property="og:description" content="这是个好的开始终于使用 github pages 和 hexo 搭建好了静态博客网站
-一切开始吧">
-<meta property="og:updated_time" content="2015-11-07T12:59:30.000Z">
+<meta property="og:description" content="MySQL 不知道初始密码  Mysql 5.7.9 新版有初始密码，mysql -uroot 回车报  ERROR 1045 (28000): Access denied for user &amp;#39;root&amp;#39;@&amp;#39;localhost&amp;#39; (using password: NO) 解决办法
+
+mysql.server stop
+mysql.server start  --sk">
+<meta property="og:updated_time" content="2015-11-15T03:30:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="开始">
-<meta name="twitter:description" content="这是个好的开始终于使用 github pages 和 hexo 搭建好了静态博客网站
-一切开始吧">
+<meta name="twitter:title" content="mysql5.7.9">
+<meta name="twitter:description" content="MySQL 不知道初始密码  Mysql 5.7.9 新版有初始密码，mysql -uroot 回车报  ERROR 1045 (28000): Access denied for user &amp;#39;root&amp;#39;@&amp;#39;localhost&amp;#39; (using password: NO) 解决办法
+
+mysql.server stop
+mysql.server start  --sk">
 
     
     <link rel="alternative" href="/atom.xml" title="王森 -blog" type="application/atom+xml">
@@ -83,14 +89,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/11/07/开始/" title="开始" itemprop="url">开始</a>
+      <a href="/2015/11/15/mysql5.7.9/" title="mysql5.7.9" itemprop="url">mysql5.7.9</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="wsmdr" target="_blank" itemprop="author">wsmdr</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-07T12:57:00.000Z" itemprop="datePublished"> 发表于 2015-11-07</time>
+    <time datetime="2015-11-15T02:21:37.000Z" itemprop="datePublished"> 发表于 2015-11-15</time>
     
   </p>
 </header>
@@ -99,17 +105,36 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#这是个好的开始"><span class="toc-number">1.</span> <span class="toc-text">这是个好的开始</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL_不知道初始密码"><span class="toc-number">1.</span> <span class="toc-text">MySQL 不知道初始密码</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="这是个好的开始">这是个好的开始</h1><p>终于使用 github pages 和 hexo 搭建好了静态博客网站</p>
-<p>一切开始吧</p>
+		<h1 id="MySQL_不知道初始密码">MySQL 不知道初始密码</h1><p>  Mysql 5.7.9 新版有初始密码，<code>mysql -uroot</code> 回车报<br>  <code>ERROR 1045 (28000): Access denied for user &#39;root&#39;@&#39;localhost&#39; (using password: NO)</code> 解决办法</p>
+<ul>
+<li><code>mysql.server stop</code></li>
+<li><code>mysql.server start  --skip-grant-tables</code></li>
+<li><code>mysql</code></li>
+<li><code>use mysql;</code></li>
+<li><code>UPDATE user SET authentication_string=PASSWORD(&#39;123456&#39;) WHERE User = &#39;root&#39; and Host = &#39;localhost&#39;;</code></li>
+<li><code>exit;</code></li>
+<li><code>mysql.server start</code></li>
+</ul>
+<p>下面 <code>mysql -uroot -p</code> 回车输入密码就可以了</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/mac/">mac</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/brew/">brew</a><a href="/tags/mac/">mac</a><a href="/tags/mysql/">mysql</a>
+  </div>
 
 </div>
 
@@ -117,7 +142,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://wsmdr.github.io/2015/11/07/开始/" data-title="开始 | 王森 -blog" data-tsina="2975364467" class="share clearfix">
+	  <div data-url="http://wsmdr.github.io/2015/11/15/mysql5.7.9/" data-title="mysql5.7.9 | 王森 -blog" data-tsina="2975364467" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -131,13 +156,21 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/11/07/homebrew-nginx-php-mysql/" title="homebrew_nginx_php_mysql">
+ <a href="/2015/11/27/phpstorm-docker-xdebug-laravel5/" title="phpstorm-docker-xdebug-laravel5">
   <strong>上一篇：</strong><br/>
   <span>
-  homebrew_nginx_php_mysql</span>
+  phpstorm-docker-xdebug-laravel5</span>
 </a>
 </div>
 
+
+<div class="next">
+<a href="/2015/11/12/phpstorm-vagrant-xdebug/"  title="phpstorm-vagrant-xdebug">
+ <strong>下一篇：</strong><br/> 
+ <span>phpstorm-vagrant-xdebug
+</span>
+</a>
+</div>
 
 </nav>
 
@@ -149,7 +182,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#这是个好的开始"><span class="toc-number">1.</span> <span class="toc-text">这是个好的开始</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL_不知道初始密码"><span class="toc-number">1.</span> <span class="toc-text">MySQL 不知道初始密码</span></a></li></ol>
  
   </div>
 
