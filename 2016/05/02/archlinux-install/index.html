@@ -1,0 +1,554 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>archlinux install | 王森 -blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="wsmdr">
+    
+
+    
+    <meta name="description" content="安装制作usb安装盘下载 最新版 archlinux.iso分区lsblk查看硬盘创建分区表
+打开设备 parted /dev/sda
+创建分区 mklabel gpt
+引导 mkpart ESP fat32 1M 513M
+设置主引导 set 1 boot on
+swap分区  mkpart primary linux-swap 513M 3G
+根/分区  mkpart primary ext4">
+<meta property="og:type" content="article">
+<meta property="og:title" content="archlinux install">
+<meta property="og:url" content="http://wsmdr.github.io/2016/05/02/archlinux-install/index.html">
+<meta property="og:site_name" content="王森 -blog">
+<meta property="og:description" content="安装制作usb安装盘下载 最新版 archlinux.iso分区lsblk查看硬盘创建分区表
+打开设备 parted /dev/sda
+创建分区 mklabel gpt
+引导 mkpart ESP fat32 1M 513M
+设置主引导 set 1 boot on
+swap分区  mkpart primary linux-swap 513M 3G
+根/分区  mkpart primary ext4">
+<meta property="og:updated_time" content="2016-05-02T13:22:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="archlinux install">
+<meta name="twitter:description" content="安装制作usb安装盘下载 最新版 archlinux.iso分区lsblk查看硬盘创建分区表
+打开设备 parted /dev/sda
+创建分区 mklabel gpt
+引导 mkpart ESP fat32 1M 513M
+设置主引导 set 1 boot on
+swap分区  mkpart primary linux-swap 513M 3G
+根/分区  mkpart primary ext4">
+
+    
+    <link rel="alternative" href="/atom.xml" title="王森 -blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="王森 -blog" title="王森 -blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="王森 -blog">王森 -blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:wsmdr.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/05/02/archlinux-install/" title="archlinux install" itemprop="url">archlinux install</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="wsmdr" target="_blank" itemprop="author">wsmdr</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-02T05:17:47.000Z" itemprop="datePublished"> 发表于 2016-05-02</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#制作usb安装盘"><span class="toc-number">1.1.</span> <span class="toc-text">制作usb安装盘</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载_最新版_archlinux-iso"><span class="toc-number">1.1.1.</span> <span class="toc-text">下载 最新版 archlinux.iso</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分区"><span class="toc-number">1.1.2.</span> <span class="toc-text">分区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#lsblk查看硬盘"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">lsblk查看硬盘</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建分区表"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">创建分区表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#格式化分区"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">格式化分区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#挂载分区"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">挂载分区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#连接互联网"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">连接互联网</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改镜像"><span class="toc-number">1.1.2.6.</span> <span class="toc-text">修改镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装配置系统"><span class="toc-number">1.1.2.7.</span> <span class="toc-text">安装配置系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重启"><span class="toc-number">1.1.2.8.</span> <span class="toc-text">重启</span></a></li></ol></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="安装">安装</h1><h2 id="制作usb安装盘">制作usb安装盘</h2><h3 id="下载_最新版_archlinux-iso">下载 最新版 <a href="https://www.archlinux.org/download/" title="archlinux.iso" target="_blank" rel="external">archlinux.iso</a></h3><h3 id="分区">分区</h3><h4 id="lsblk查看硬盘">lsblk查看硬盘</h4><h4 id="创建分区表">创建分区表</h4><ul>
+<li>打开设备 <code>parted /dev/sda</code></li>
+<li>创建分区 <code>mklabel gpt</code></li>
+<li>引导 <code>mkpart ESP fat32 1M 513M</code></li>
+<li>设置主引导 <code>set 1 boot on</code></li>
+<li>swap分区  <code>mkpart primary linux-swap 513M 3G</code></li>
+<li>根<code>/</code>分区  <code>mkpart primary ext4 3G 60G</code></li>
+<li>家<code>/home</code>分区 <code>mkpart primary ext4 60G 100%</code><h4 id="格式化分区">格式化分区</h4></li>
+<li>格式化fat32分区 <code>mkfs.vfat -F32 /dev/sda1</code></li>
+<li>格式化swap并启用<br><code>mkswap /dev/sda2</code><br><code>swapon /dev/sda2</code><br><code>mkfs.ext4 /dev/sda3</code><br><code>mkfs.ext4 /dev/sda4</code></li>
+</ul>
+<h4 id="挂载分区">挂载分区</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mount <span class="regexp">/dev/</span>sda3 /mnt</span><br><span class="line">mkdir <span class="regexp">/mnt/</span>boot</span><br><span class="line">mount <span class="regexp">/dev/</span>sda1 <span class="regexp">/mnt/</span>boot</span><br><span class="line">mkdir <span class="regexp">/mnt/</span>home</span><br><span class="line">mount <span class="regexp">/dev/</span>sda4 <span class="regexp">/mnt/</span>home</span><br></pre></td></tr></table></figure>
+<h4 id="连接互联网">连接互联网</h4><ul>
+<li>执行 <code>iwconfig</code> 查看无线网卡为 <code>wlp1s0</code></li>
+<li>执行 <code>wifi-menu wlp1s0</code> 弹出对话框连接网络</li>
+<li><code>ping -c 3 baidu.com</code> 查看网络联通情况<h4 id="修改镜像">修改镜像</h4></li>
+<li><p>编辑文件 <code>/etc/pacman.d/mirrorlist</code> 内容为</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Server = http://mirrors.aliyun.com/archlinux/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br><span class="line">Server = http://mirrors.<span class="number">163</span>.com/archlinux/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新源<br><code>pacman -Syy</code></p>
+</li>
+</ul>
+<h4 id="安装配置系统">安装配置系统</h4><ol>
+<li>安装系统<br><code>pacstrap -i /mnt base base-devel</code> (<em>base-devel</em> 可不装)</li>
+<li>生成分区信息<br><code>genfstab -U -p /mnt &gt; /mnt/etc/fstab</code></li>
+<li>进入新系统<br><code>arch-chroot /mnt /bin/bash</code></li>
+<li>本地化</li>
+</ol>
+<ul>
+<li>编辑<code>/etc/locale.gen</code> 去掉 <code>en_US.UTF-8</code>、<code>zh_CN.UTF-8</code>、<code>zh_CN.UTF-8</code>、前面的注释</li>
+<li><code>locale-gen</code></li>
+<li><code>echo LANG=en_US.UTF-8 &gt; /etc/locale.conf</code></li>
+</ul>
+<ol>
+<li>设置时间<br><code>ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</code><br><code>hwclock --systohc --utc</code></li>
+<li>给root设置密码 <code>passwd</code></li>
+<li>设置主机名称<br><code>echo Arch-wangsen &gt; /etc/hostname</code></li>
+<li><p>安装引导程序</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">pacman</span> <span class="literal">-</span><span class="comment">S</span> <span class="comment">dosfstools</span> <span class="comment">grub</span> <span class="comment">efibootmgr</span></span><br><span class="line"><span class="comment">grub</span><span class="literal">-</span><span class="comment">install</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">target=x86_64</span><span class="literal">-</span><span class="comment">efi</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">efi</span><span class="literal">-</span><span class="comment">directory=/boot</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">bootloader</span><span class="literal">-</span><span class="comment">id=arch_grub</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">recheck</span></span><br><span class="line"><span class="comment">grub</span><span class="literal">-</span><span class="comment">mkconfig</span> <span class="literal">-</span><span class="comment">o</span> <span class="comment">/boot/grub/grub</span><span class="string">.</span><span class="comment">cfg</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装无线网卡<br><code>pacman -S iw wpa_supplicant dialog wireless_tools</code></p>
+<h4 id="重启">重启</h4><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">exit</span></span><br><span class="line">umount -R /mnt</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Linux/">Linux</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://wsmdr.github.io/2016/05/02/archlinux-install/" data-title="archlinux install | 王森 -blog" data-tsina="2975364467" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/11/27/phpstorm-docker-xdebug-laravel5/"  title="phpstorm-docker-xdebug-laravel5">
+ <strong>下一篇：</strong><br/> 
+ <span>phpstorm-docker-xdebug-laravel5
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#制作usb安装盘"><span class="toc-number">1.1.</span> <span class="toc-text">制作usb安装盘</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载_最新版_archlinux-iso"><span class="toc-number">1.1.1.</span> <span class="toc-text">下载 最新版 archlinux.iso</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分区"><span class="toc-number">1.1.2.</span> <span class="toc-text">分区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#lsblk查看硬盘"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">lsblk查看硬盘</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建分区表"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">创建分区表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#格式化分区"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">格式化分区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#挂载分区"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">挂载分区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#连接互联网"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">连接互联网</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改镜像"><span class="toc-number">1.1.2.6.</span> <span class="toc-text">修改镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装配置系统"><span class="toc-number">1.1.2.7.</span> <span class="toc-text">安装配置系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重启"><span class="toc-number">1.1.2.8.</span> <span class="toc-text">重启</span></a></li></ol></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/mac/" title="mac">mac<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/php/" title="php">php<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/mac/" title="mac">mac<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/phpstorm/" title="phpstorm">phpstorm<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mysql/" title="mysql">mysql<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/vagrant/" title="vagrant">vagrant<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/xdebug/" title="xdebug">xdebug<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/shell/" title="shell">shell<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/laravel/" title="laravel">laravel<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/brew/" title="brew">brew<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/homebrew/" title="homebrew">homebrew<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php/" title="php">php<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://laravel.com" target="_blank" title="Laravel">Laravel</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.bootcss.com" target="_blank" title="Bootstrap中文网">Bootstrap中文网</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2975364467&verifier=802778c2&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2975364467" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="wsmdr">wsmdr</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
