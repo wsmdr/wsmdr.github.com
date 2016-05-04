@@ -81,6 +81,73 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/05/03/使用docker镜像gogs搭建git服务/" title="使用docker镜像gogs搭建git服务" itemprop="url">使用docker镜像gogs搭建git服务</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="wsmdr" target="_blank" itemprop="author">wsmdr</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-03T21:37:42.000Z" itemprop="datePublished"> 发表于 2016-05-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="下载gogs/gogs">下载gogs/gogs</h3><blockquote>
+<p><code>docker pull gogs/gogs</code></p>
+</blockquote>
+<h3 id="创建本地库地址">创建本地库地址</h3><blockquote>
+<p><code>mkdir ~/.gogs</code></p>
+</blockquote>
+<h3 id="创建container">创建container</h3><blockquote>
+<p><code>docker run --name=gogs -p 10022:22 -p 3000:3000 -v ~/.gogs:/data gogs/gogs</code></p>
+</blockquote>
+<h3 id="第一次启动配置数据库信息">第一次启动配置数据库信息</h3><p><img src="http://7xo57b.com1.z0.glb.clouddn.com/%E9%80%89%E5%8C%BA_002.png" alt=""></p>
+<h3 id="登录或注册账户">登录或注册账户</h3><p><img src="http://7xo57b.com1.z0.glb.clouddn.com/%E9%80%89%E5%8C%BA_003.png" alt=""></p>
+<hr>
+<h3 id="账户首页">账户首页</h3><p><img src="http://7xo57b.com1.z0.glb.clouddn.com/%E9%80%89%E5%8C%BA_004.png" alt=""></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/docker/">docker</a><a href="/tags/git/">git</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/05/02/archlinux-install/" title="archlinux install" itemprop="url">archlinux install</a>
   </h1>
   <p class="article-author">By
@@ -641,15 +708,11 @@
 			
 		
 			
+				<li><a href="/tags/docker/" title="docker">docker<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/mysql/" title="mysql">mysql<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/vagrant/" title="vagrant">vagrant<sup>1</sup></a></li>
 			
 		
 			
@@ -657,7 +720,15 @@
 			
 		
 			
-				<li><a href="/tags/shell/" title="shell">shell<sup>1</sup></a></li>
+				<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/vagrant/" title="vagrant">vagrant<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 			
 		
 			
@@ -669,7 +740,7 @@
 			
 		
 			
-				<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+				<li><a href="/tags/shell/" title="shell">shell<sup>1</sup></a></li>
 			
 		
 			

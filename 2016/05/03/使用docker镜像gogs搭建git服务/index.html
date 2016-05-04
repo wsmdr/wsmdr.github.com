@@ -4,38 +4,62 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>homebrew_nginx_php_mysql | 王森 -blog</title>
+    <title>使用docker镜像gogs搭建git服务 | 王森 -blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="wsmdr">
     
 
     
-    <meta name="description" content="Mac - Homebrew - Nginx - Php - Mysql安装Homebrew1ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-1xcode-select --install
-brew install nginx
+    <meta name="description" content="下载gogs/gogs
+docker pull gogs/gogs
 
-nginx默认8080端口 
-可在 /">
+创建本地库地址
+mkdir ~/.gogs
+
+创建container
+docker run --name=gogs -p 10022:22 -p 3000:3000 -v ~/.gogs:/data gogs/gogs
+
+第一次启动配置数据库信息
+登录或注册账户
+
+账户首页">
 <meta property="og:type" content="article">
-<meta property="og:title" content="homebrew_nginx_php_mysql">
-<meta property="og:url" content="http://wsmdr.github.io/2015/11/07/homebrew-nginx-php-mysql/index.html">
+<meta property="og:title" content="使用docker镜像gogs搭建git服务">
+<meta property="og:url" content="http://wsmdr.github.io/2016/05/03/使用docker镜像gogs搭建git服务/index.html">
 <meta property="og:site_name" content="王森 -blog">
-<meta property="og:description" content="Mac - Homebrew - Nginx - Php - Mysql安装Homebrew1ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-1xcode-select --install
-brew install nginx
+<meta property="og:description" content="下载gogs/gogs
+docker pull gogs/gogs
 
-nginx默认8080端口 
-可在 /">
-<meta property="og:updated_time" content="2015-11-07T16:31:08.000Z">
+创建本地库地址
+mkdir ~/.gogs
+
+创建container
+docker run --name=gogs -p 10022:22 -p 3000:3000 -v ~/.gogs:/data gogs/gogs
+
+第一次启动配置数据库信息
+登录或注册账户
+
+账户首页">
+<meta property="og:image" content="http://7xo57b.com1.z0.glb.clouddn.com/%E9%80%89%E5%8C%BA_002.png">
+<meta property="og:image" content="http://7xo57b.com1.z0.glb.clouddn.com/%E9%80%89%E5%8C%BA_003.png">
+<meta property="og:image" content="http://7xo57b.com1.z0.glb.clouddn.com/%E9%80%89%E5%8C%BA_004.png">
+<meta property="og:updated_time" content="2016-05-04T07:05:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="homebrew_nginx_php_mysql">
-<meta name="twitter:description" content="Mac - Homebrew - Nginx - Php - Mysql安装Homebrew1ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-1xcode-select --install
-brew install nginx
+<meta name="twitter:title" content="使用docker镜像gogs搭建git服务">
+<meta name="twitter:description" content="下载gogs/gogs
+docker pull gogs/gogs
 
-nginx默认8080端口 
-可在 /">
+创建本地库地址
+mkdir ~/.gogs
+
+创建container
+docker run --name=gogs -p 10022:22 -p 3000:3000 -v ~/.gogs:/data gogs/gogs
+
+第一次启动配置数据库信息
+登录或注册账户
+
+账户首页">
 
     
     <link rel="alternative" href="/atom.xml" title="王森 -blog" type="application/atom+xml">
@@ -95,14 +119,14 @@ nginx默认8080端口
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/11/07/homebrew-nginx-php-mysql/" title="homebrew_nginx_php_mysql" itemprop="url">homebrew_nginx_php_mysql</a>
+      <a href="/2016/05/03/使用docker镜像gogs搭建git服务/" title="使用docker镜像gogs搭建git服务" itemprop="url">使用docker镜像gogs搭建git服务</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="wsmdr" target="_blank" itemprop="author">wsmdr</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-07T16:19:20.000Z" itemprop="datePublished"> 发表于 2015-11-07</time>
+    <time datetime="2016-05-03T21:37:42.000Z" itemprop="datePublished"> 发表于 2016-05-03</time>
     
   </p>
 </header>
@@ -111,68 +135,32 @@ nginx默认8080端口
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mac_-_Homebrew_-_Nginx_-_Php_-_Mysql"><span class="toc-number">1.</span> <span class="toc-text">Mac - Homebrew - Nginx - Php - Mysql</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Homebrew"><span class="toc-number">1.1.</span> <span class="toc-text">安装Homebrew</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用php扩展"><span class="toc-number">1.2.</span> <span class="toc-text">常用php扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#brew_cask_安装_Mac程序"><span class="toc-number">1.3.</span> <span class="toc-text">brew cask 安装 Mac程序</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载gogs/gogs"><span class="toc-number">1.</span> <span class="toc-text">下载gogs/gogs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建本地库地址"><span class="toc-number">2.</span> <span class="toc-text">创建本地库地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建container"><span class="toc-number">3.</span> <span class="toc-text">创建container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第一次启动配置数据库信息"><span class="toc-number">4.</span> <span class="toc-text">第一次启动配置数据库信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登录或注册账户"><span class="toc-number">5.</span> <span class="toc-text">登录或注册账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#账户首页"><span class="toc-number">6.</span> <span class="toc-text">账户首页</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="Mac_-_Homebrew_-_Nginx_-_Php_-_Mysql">Mac - Homebrew - Nginx - Php - Mysql</h1><h2 id="安装Homebrew">安装Homebrew</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-<span class="built_in">select</span> <span class="comment">--install</span></span><br></pre></td></tr></table></figure>
-<p><strong>brew install nginx</strong></p>
-<blockquote>
-<p>nginx默认8080端口 </p>
-<p>可在 /usr/local/etc/nginx/nginx.conf 文件修改</p>
+		<h3 id="下载gogs/gogs">下载gogs/gogs</h3><blockquote>
+<p><code>docker pull gogs/gogs</code></p>
 </blockquote>
-<p><strong>brew install mysql</strong></p>
-<p><strong>brew install homebrew/php/php56</strong></p>
-<blockquote>
-<p>由于Mac自带php版本  安装完之后需要添加php56到PATH中 </p>
-<p>export PATH=”$(brew –prefix homebrew/php/php56)/bin:$PATH”</p>
+<h3 id="创建本地库地址">创建本地库地址</h3><blockquote>
+<p><code>mkdir ~/.gogs</code></p>
 </blockquote>
-<h2 id="常用php扩展">常用php扩展</h2><ul>
-<li>brew install php56-mycrypt</li>
-</ul>
-<ul>
-<li><p>brew install php56-memcache</p>
-</li>
-<li><p>brew install php56-memcached</p>
-<ul>
-<li><p>brew link –force zlib</p>
-</li>
-<li><p>未安装zlib</p>
-<ul>
-<li><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">brew </span>tap homebrew/dupes</span><br><span class="line"><span class="keyword">brew </span>install zlib</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>brew install php56-phalcon</p>
-</li>
-</ul>
-<ul>
-<li>brew install php56-redis</li>
-</ul>
-<ul>
-<li>brew install php56-swoole</li>
-</ul>
-<ul>
-<li>brew install php56-xdebug</li>
-</ul>
-<h2 id="brew_cask_安装_Mac程序">brew cask 安装 Mac程序</h2><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">brew </span>install caskroom/cask/<span class="keyword">brew-cask</span></span><br></pre></td></tr></table></figure>
+<h3 id="创建container">创建container</h3><blockquote>
+<p><code>docker run --name=gogs -p 10022:22 -p 3000:3000 -v ~/.gogs:/data gogs/gogs</code></p>
+</blockquote>
+<h3 id="第一次启动配置数据库信息">第一次启动配置数据库信息</h3><p><img src="http://7xo57b.com1.z0.glb.clouddn.com/%E9%80%89%E5%8C%BA_002.png" alt=""></p>
+<h3 id="登录或注册账户">登录或注册账户</h3><p><img src="http://7xo57b.com1.z0.glb.clouddn.com/%E9%80%89%E5%8C%BA_003.png" alt=""></p>
+<hr>
+<h3 id="账户首页">账户首页</h3><p><img src="http://7xo57b.com1.z0.glb.clouddn.com/%E9%80%89%E5%8C%BA_004.png" alt=""></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/php/">php</a>
-</div>
-
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/homebrew/">homebrew</a><a href="/tags/mac/">mac</a><a href="/tags/mysql/">mysql</a><a href="/tags/nginx/">nginx</a><a href="/tags/php/">php</a>
+  <span></span> <a href="/tags/docker/">docker</a><a href="/tags/git/">git</a>
   </div>
 
 </div>
@@ -181,7 +169,7 @@ nginx默认8080端口
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://wsmdr.github.io/2015/11/07/homebrew-nginx-php-mysql/" data-title="homebrew_nginx_php_mysql | 王森 -blog" data-tsina="2975364467" class="share clearfix">
+	  <div data-url="http://wsmdr.github.io/2016/05/03/使用docker镜像gogs搭建git服务/" data-title="使用docker镜像gogs搭建git服务 | 王森 -blog" data-tsina="2975364467" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -194,19 +182,11 @@ nginx默认8080端口
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/11/07/zsh/" title="zsh">
-  <strong>上一篇：</strong><br/>
-  <span>
-  zsh</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/11/07/开始/"  title="开始">
+<a href="/2016/05/02/archlinux-install/"  title="archlinux install">
  <strong>下一篇：</strong><br/> 
- <span>开始
+ <span>archlinux install
 </span>
 </a>
 </div>
@@ -221,7 +201,7 @@ nginx默认8080端口
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mac_-_Homebrew_-_Nginx_-_Php_-_Mysql"><span class="toc-number">1.</span> <span class="toc-text">Mac - Homebrew - Nginx - Php - Mysql</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Homebrew"><span class="toc-number">1.1.</span> <span class="toc-text">安装Homebrew</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用php扩展"><span class="toc-number">1.2.</span> <span class="toc-text">常用php扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#brew_cask_安装_Mac程序"><span class="toc-number">1.3.</span> <span class="toc-text">brew cask 安装 Mac程序</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载gogs/gogs"><span class="toc-number">1.</span> <span class="toc-text">下载gogs/gogs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建本地库地址"><span class="toc-number">2.</span> <span class="toc-text">创建本地库地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建container"><span class="toc-number">3.</span> <span class="toc-text">创建container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第一次启动配置数据库信息"><span class="toc-number">4.</span> <span class="toc-text">第一次启动配置数据库信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登录或注册账户"><span class="toc-number">5.</span> <span class="toc-text">登录或注册账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#账户首页"><span class="toc-number">6.</span> <span class="toc-text">账户首页</span></a></li></ol>
  
   </div>
 
