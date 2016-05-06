@@ -133,9 +133,10 @@ docker">
 		
   <p class="article-time">
     <time datetime="2016-05-03T21:37:42.000Z" itemprop="datePublished"> 发表于 2016-05-03</time>
-    
+
   </p>
 </header>
+
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
@@ -410,6 +411,11 @@ $(document).ready(function(){
   $(window).scroll(function(){
     o.css("top",Math.max(80,260-$(this).scrollTop()));
   });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
   
   $(window).resize(function(){
     getSize(); 

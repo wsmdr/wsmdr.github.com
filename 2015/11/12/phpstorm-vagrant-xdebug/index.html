@@ -96,9 +96,10 @@ PhpStorm 设置">
 		
   <p class="article-time">
     <time datetime="2015-11-12T09:12:09.000Z" itemprop="datePublished"> 发表于 2015-11-12</time>
-    
+
   </p>
 </header>
+
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
@@ -365,6 +366,11 @@ $(document).ready(function(){
   $(window).scroll(function(){
     o.css("top",Math.max(80,260-$(this).scrollTop()));
   });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
   
   $(window).resize(function(){
     getSize(); 

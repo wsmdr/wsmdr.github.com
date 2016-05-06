@@ -97,9 +97,10 @@ mysql.server start  --sk">
 		
   <p class="article-time">
     <time datetime="2015-11-15T02:21:37.000Z" itemprop="datePublished"> 发表于 2015-11-15</time>
-    
+
   </p>
 </header>
+
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
@@ -378,6 +379,11 @@ $(document).ready(function(){
   $(window).scroll(function(){
     o.css("top",Math.max(80,260-$(this).scrollTop()));
   });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
   
   $(window).resize(function(){
     getSize(); 
