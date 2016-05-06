@@ -23,7 +23,9 @@ docker run --name=gogs -p 10022:22 -p 3000:3000 -v ~/.gogs:/data gogs/gogs
 第一次启动配置数据库信息
 登录或注册账户
 
-账户首页">
+账户首页
+参考gogs
+docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用docker镜像gogs搭建git服务">
 <meta property="og:url" content="http://wsmdr.github.io/2016/05/03/使用docker镜像gogs搭建git服务/index.html">
@@ -40,11 +42,13 @@ docker run --name=gogs -p 10022:22 -p 3000:3000 -v ~/.gogs:/data gogs/gogs
 第一次启动配置数据库信息
 登录或注册账户
 
-账户首页">
+账户首页
+参考gogs
+docker">
 <meta property="og:image" content="http://7xo57b.com1.z0.glb.clouddn.com/%E9%80%89%E5%8C%BA_002.png">
 <meta property="og:image" content="http://7xo57b.com1.z0.glb.clouddn.com/%E9%80%89%E5%8C%BA_003.png">
 <meta property="og:image" content="http://7xo57b.com1.z0.glb.clouddn.com/%E9%80%89%E5%8C%BA_004.png">
-<meta property="og:updated_time" content="2016-05-04T07:05:28.000Z">
+<meta property="og:updated_time" content="2016-05-06T05:54:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用docker镜像gogs搭建git服务">
 <meta name="twitter:description" content="下载gogs/gogs
@@ -59,7 +63,9 @@ docker run --name=gogs -p 10022:22 -p 3000:3000 -v ~/.gogs:/data gogs/gogs
 第一次启动配置数据库信息
 登录或注册账户
 
-账户首页">
+账户首页
+参考gogs
+docker">
 
     
     <link rel="alternative" href="/atom.xml" title="王森 -blog" type="application/atom+xml">
@@ -135,7 +141,7 @@ docker run --name=gogs -p 10022:22 -p 3000:3000 -v ~/.gogs:/data gogs/gogs
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载gogs/gogs"><span class="toc-number">1.</span> <span class="toc-text">下载gogs/gogs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建本地库地址"><span class="toc-number">2.</span> <span class="toc-text">创建本地库地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建container"><span class="toc-number">3.</span> <span class="toc-text">创建container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第一次启动配置数据库信息"><span class="toc-number">4.</span> <span class="toc-text">第一次启动配置数据库信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登录或注册账户"><span class="toc-number">5.</span> <span class="toc-text">登录或注册账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#账户首页"><span class="toc-number">6.</span> <span class="toc-text">账户首页</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载gogs/gogs"><span class="toc-number">1.</span> <span class="toc-text">下载gogs/gogs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建本地库地址"><span class="toc-number">2.</span> <span class="toc-text">创建本地库地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建container"><span class="toc-number">3.</span> <span class="toc-text">创建container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第一次启动配置数据库信息"><span class="toc-number">4.</span> <span class="toc-text">第一次启动配置数据库信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登录或注册账户"><span class="toc-number">5.</span> <span class="toc-text">登录或注册账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#账户首页"><span class="toc-number">6.</span> <span class="toc-text">账户首页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
 		
 		</div>
 		
@@ -152,6 +158,8 @@ docker run --name=gogs -p 10022:22 -p 3000:3000 -v ~/.gogs:/data gogs/gogs
 <h3 id="登录或注册账户">登录或注册账户</h3><p><img src="http://7xo57b.com1.z0.glb.clouddn.com/%E9%80%89%E5%8C%BA_003.png" alt=""></p>
 <hr>
 <h3 id="账户首页">账户首页</h3><p><img src="http://7xo57b.com1.z0.glb.clouddn.com/%E9%80%89%E5%8C%BA_004.png" alt=""></p>
+<h3 id="参考">参考</h3><p><a href="https://github.com/gogits/gogs/tree/master/docker" target="_blank" rel="external">gogs</a></p>
+<p><a href="http://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/" target="_blank" rel="external">docker</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -201,7 +209,7 @@ docker run --name=gogs -p 10022:22 -p 3000:3000 -v ~/.gogs:/data gogs/gogs
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载gogs/gogs"><span class="toc-number">1.</span> <span class="toc-text">下载gogs/gogs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建本地库地址"><span class="toc-number">2.</span> <span class="toc-text">创建本地库地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建container"><span class="toc-number">3.</span> <span class="toc-text">创建container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第一次启动配置数据库信息"><span class="toc-number">4.</span> <span class="toc-text">第一次启动配置数据库信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登录或注册账户"><span class="toc-number">5.</span> <span class="toc-text">登录或注册账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#账户首页"><span class="toc-number">6.</span> <span class="toc-text">账户首页</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载gogs/gogs"><span class="toc-number">1.</span> <span class="toc-text">下载gogs/gogs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建本地库地址"><span class="toc-number">2.</span> <span class="toc-text">创建本地库地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建container"><span class="toc-number">3.</span> <span class="toc-text">创建container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第一次启动配置数据库信息"><span class="toc-number">4.</span> <span class="toc-text">第一次启动配置数据库信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登录或注册账户"><span class="toc-number">5.</span> <span class="toc-text">登录或注册账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#账户首页"><span class="toc-number">6.</span> <span class="toc-text">账户首页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
  
   </div>
 
